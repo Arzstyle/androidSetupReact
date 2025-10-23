@@ -5,11 +5,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnDisplayScreen from './src/screens/onDisplay';
 import HomePage from './src/screens/HomePage';
 import DetailDestination from './src/screens/DetailDestination';
+import DetailTicket from './src/screens/DetailTicket'; 
 
 export type RootStackParamList = {
   OnDisplay: undefined;
   Home: undefined;
   DetailDestination: undefined; 
+  DetailTicket: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -17,21 +19,25 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OnDisplay">
+      <Stack.Navigator 
+        initialRouteName="OnDisplay"
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen 
           name="OnDisplay" 
           component={OnDisplayScreen} 
-          options={{ headerShown: false }}
         />
         <Stack.Screen 
           name="Home" 
           component={HomePage} 
-          options={{ headerShown: false }}
         />
         <Stack.Screen 
           name="DetailDestination"
           component={DetailDestination}
-          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="DetailTicket"
+          component={DetailTicket}
         />
       </Stack.Navigator>
     </NavigationContainer>
