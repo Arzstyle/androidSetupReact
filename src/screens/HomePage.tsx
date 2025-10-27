@@ -1,33 +1,24 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Platform, StatusBar } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '../../App'; 
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  StatusBar,
+  Platform
+} from 'react-native';
 
-// Mengimpor setiap komponen 
+// Impor tipe navigasi
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../../App'; // Sesuaikan path
+
+// Impor semua komponen yang sudah dipecah secara individual
 import { HomeHeader } from '../components/homePage/HomeHeader';
 import { PromoBanner } from '../components/homePage/PromoBanner';
 import { SearchBar } from '../components/homePage/SearchBar';
 import { SectionHeader } from '../components/homePage/SectionHeader';
-import { CategoryList } from '../components/homePage/CategoryList';
 import { DestinationCard } from '../components/homePage/DestinationCard';
-
-const popularDestinations = [
-  {
-    id: '1',
-    name: 'Labuan Bajo',
-    country: 'Indonesia',
-    image: require('../assets/bg-labuan.png'), 
-    rating: '5.0',
-    price: '$4.000',
-  },
-  {
-    id: '2',
-    name: 'Venice',
-    country: 'Italia',
-    image: require('../assets/bg-italia.png'),
-    rating: '4.7',
-  },
-];
+// Impor NavbarBottom
+import { NavbarBottom } from '../components/homePage/NavbarBottom';
 
 const SAFE_AREA_PADDING_TOP = Platform.OS === 'android' 
   ? (StatusBar.currentHeight ?? 0) + 10 
@@ -36,6 +27,28 @@ const SAFE_AREA_PADDING_TOP = Platform.OS === 'android'
 type HomePageProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomePage = ({ navigation }: HomePageProps) => {
+
+  const handleBookNowPress = () => {
+    navigation.navigate('DetailDestination');
+  };
+
+  // Data 'item' untuk DestinationCard
+  const labuanBajoItem = {
+    image: require('../assets/bg-labuan.png'),
+    name: "Labuan Bajo",
+    country: "Indonesia",
+    rating: "5.0",
+    price: "$4.000"
+  };
+
+  const veniceItem = {
+    image: require('../assets/bg-italia.png'),
+    name: "Venice",
+    country: "Italia",
+    rating: "4.7",
+    price: undefined
+  };
+
   return (
     <View style={styles.containerWrapper}>
       <ScrollView>
@@ -45,33 +58,35 @@ const HomePage = ({ navigation }: HomePageProps) => {
           <PromoBanner />
           <SearchBar />
           <SectionHeader title="Popular Destination" />
-          <CategoryList />
 
-          {popularDestinations.map((item) => (
-            <DestinationCard
-              key={item.id}
-              item={item}
-              onPress={() => {
-                navigation.navigate('DetailDestination');
-              }}
-            />
-          ))}
+          <DestinationCard
+            item={labuanBajoItem}
+            onPress={handleBookNowPress}
+          />
+          <DestinationCard
+            item={veniceItem}
+            onPress={handleBookNowPress}
+          />
 
         </View>
       </ScrollView>
+      
+      {/* NavbarBottom diletakkan di sini, di luar ScrollView */}
+      <NavbarBottom />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   containerWrapper: {
-    flex: 1,
+    flex: 1, 
     backgroundColor: '#F3F2E7',
     paddingTop: SAFE_AREA_PADDING_TOP,
   },
   innerContainer: {
     paddingHorizontal: 20,
-    paddingBottom: 90, // Ruang untuk tab navigator di bawah
+    // Padding agar item terakhir tidak tertutup navbar
+    paddingBottom: 20, 
   },
 });
 

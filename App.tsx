@@ -2,15 +2,17 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// Impor semua layar utama
 import OnDisplayScreen from './src/screens/onDisplay';
 import HomePage from './src/screens/HomePage';
 import DetailDestination from './src/screens/DetailDestination';
-import DetailTicket from './src/screens/DetailTicket'; 
+import DetailTicket from './src/screens/DetailTicket';
 
+// Tipe navigasi Anda kembali sederhana
 export type RootStackParamList = {
   OnDisplay: undefined;
   Home: undefined;
-  DetailDestination: undefined; 
+  DetailDestination: undefined;
   DetailTicket: undefined;
 };
 
@@ -23,6 +25,7 @@ const App = () => {
         initialRouteName="OnDisplay"
         screenOptions={{ headerShown: false }}
       >
+        {/* Alur Anda tetap sama: OnDisplay -> Home */}
         <Stack.Screen 
           name="OnDisplay" 
           component={OnDisplayScreen} 

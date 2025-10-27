@@ -100,6 +100,5 @@ const styles = StyleSheet.create({
   },
 });
 
-// Ganti menjadi export default agar lebih konsisten
 export default BookingFooter;
 

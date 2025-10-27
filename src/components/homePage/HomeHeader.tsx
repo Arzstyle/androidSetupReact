@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 export const HomeHeader = () => {
   return (
@@ -9,7 +8,8 @@ export const HomeHeader = () => {
         <Text style={styles.greetingText}>Hi, Akbar</Text>
       </View>
       <View style={styles.weatherContainer}>
-        <Feather name="sun" size={24} color="#333" />
+        {/* Ganti Ikon Feather dengan Emoji */}
+        <Text style={styles.weatherIcon}>☀️</Text>
         <Text style={styles.weatherText}> 24° C</Text>
       </View>
     </View>
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  weatherIcon: {
+    fontSize: 24,
+  },
   weatherText: {
     fontSize: 22,
     fontWeight: '600',
@@ -39,3 +42,4 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
 });
+

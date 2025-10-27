@@ -39,7 +39,6 @@ export const DestinationCard = ({ item, onPress }: DestinationCardProps) => {
             </View>
             <View style={styles.ratingContainer}>
               <Text style={styles.cardRating}>⭐ {item.rating}</Text>
-              {/* Hanya tampilkan harga jika ada */}
               {item.price && <Text style={styles.cardPrice}>{item.price}</Text>}
             </View>
           </View>

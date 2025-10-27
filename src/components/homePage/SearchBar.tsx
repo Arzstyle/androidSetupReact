@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
+import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
 
 export const SearchBar = () => {
   return (
     <View style={styles.searchSection}>
       <View style={styles.searchInputContainer}>
-        <Feather name="search" size={20} color="#888" />
+        <Text style={styles.searchIcon}>🔍</Text>
         <TextInput
           placeholder="Search destination..."
           style={styles.searchInput}
@@ -14,7 +13,7 @@ export const SearchBar = () => {
         />
       </View>
       <TouchableOpacity style={styles.filterButton}>
-        <Feather name="sliders" size={20} color="white" />
+        <Text style={styles.filterIcon}>📊</Text>
       </TouchableOpacity>
     </View>
   );
@@ -32,11 +31,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingHorizontal: 15,
     alignItems: 'center',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+  },
+  searchIcon: {
+    fontSize: 18,
+    color: '#888',
   },
   searchInput: {
     flex: 1,
@@ -53,10 +51,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+  },
+  filterIcon: {
+    fontSize: 24,
+    color: 'white',
   },
 });
+

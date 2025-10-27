@@ -15,7 +15,6 @@ import { DetailHeader } from '../components/detailPage/DetailHeader';
 import { SectionHeader } from '../components/detailPage/SectionHeader';
 import { ReviewCard } from '../components/detailPage/ReviewCard';
 import { RecommendationCard } from '../components/detailPage/RecommendationCard';
-// Perbaikan: Hapus tanda {} saat mengimpor BookingFooter
 import BookingFooter from '../components/detailPage/BookingFooter';
 
 type DetailDestinationProps = NativeStackScreenProps<RootStackParamList, 'DetailDestination'>;
