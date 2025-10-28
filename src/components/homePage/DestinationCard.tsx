@@ -5,32 +5,37 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
-  ImageSourcePropType,
 } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
-interface DestinationCardProps {
-  item: {
-    name: string;
-    country: string;
-    image: ImageSourcePropType;
-    rating: string;
-    price?: string; // Harga dibuat opsional
-  };
+// 1. Definisikan tipe data untuk 'item'
+// Perbaikan: 'image' sekarang adalah 'string'
+type DestinationItem = {
+  id: string; // Tambahkan id jika belum ada
+  name: string;
+  country: string;
+  image: string; // Ini adalah URL string dari API
+  rating: string;
+  price?: string;
+};
+
+// Tentukan tipe untuk props komponen
+type DestinationCardProps = {
+  item: DestinationItem;
   onPress: () => void;
-}
+};
 
 export const DestinationCard = ({ item, onPress }: DestinationCardProps) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <ImageBackground
-        source={item.image}
+        // 2. Gunakan { uri: item.image } untuk memuat gambar dari URL
+        source={{ uri: item.image }}
         style={styles.destinationCard}
         imageStyle={{ borderRadius: 20 }}
       >
         <View style={styles.cardOverlay}>
           <View style={styles.heartIconContainer}>
-            <Feather name="heart" size={22} color="#333" />
+            <Text style={styles.heartIcon}>❤️</Text>
           </View>
           <View style={styles.cardDetails}>
             <View>
@@ -39,7 +44,9 @@ export const DestinationCard = ({ item, onPress }: DestinationCardProps) => {
             </View>
             <View style={styles.ratingContainer}>
               <Text style={styles.cardRating}>⭐ {item.rating}</Text>
-              {item.price && <Text style={styles.cardPrice}>{item.price}</Text>}
+              {item.price && (
+                <Text style={styles.cardPrice}>{item.price}</Text>
+              )}
             </View>
           </View>
         </View>
@@ -70,6 +77,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  heartIcon: {
+    fontSize: 20,
+  },
   cardDetails: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -91,10 +101,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: 'white',
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 10,
   },
   cardPrice: {
     fontSize: 18,
@@ -103,3 +109,4 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 });
+

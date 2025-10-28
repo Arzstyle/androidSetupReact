@@ -8,7 +8,6 @@ export const HomeHeader = () => {
         <Text style={styles.greetingText}>Hi, Akbar</Text>
       </View>
       <View style={styles.weatherContainer}>
-        {/* Ganti Ikon Feather dengan Emoji */}
         <Text style={styles.weatherIcon}>☀️</Text>
         <Text style={styles.weatherText}> 24° C</Text>
       </View>

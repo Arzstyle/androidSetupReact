@@ -12,27 +12,19 @@ export const NavbarBottom = () => {
 
   return (
     <View style={styles.container}>
-      {/* Tombol Home (Aktif) */}
       <TouchableOpacity
         style={styles.tabButton}
         onPress={() => navigation.navigate('Home')}
       >
-        {/* 2. Ganti <Text> dengan <Ionicons> */}
         <Ionicons name="home" style={styles.navbarIconActive} />
       </TouchableOpacity>
-
-      {/* Tombol Tiket (Inaktif) */}
       <TouchableOpacity
         style={styles.tabButton}
         onPress={() => navigation.navigate('DetailTicket')}
       >
-        {/* 3. Ganti <Text> dengan <Ionicons> */}
         <Ionicons name="grid" style={styles.navbarIconInactive} />
       </TouchableOpacity>
-
-      {/* Tombol Profile (Inaktif) */}
       <TouchableOpacity style={styles.tabButton}>
-        {/* 4. Ganti <Text> dengan <Ionicons> */}
         <Ionicons name="person" style={styles.navbarIconInactive} />
       </TouchableOpacity>
     </View>
@@ -44,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#1A2E35', // Warna gelap
+    backgroundColor: '#1A2E35',
     height: 70,
   },
   tabButton: {
@@ -54,11 +46,11 @@ const styles = StyleSheet.create({
   },
   navbarIconActive: {
     fontSize: 28,
-    color: 'white', // Ikon aktif putih
+    color: 'white', 
   },
   navbarIconInactive: {
     fontSize: 24,
-    color: '#7D8A93', // Ikon inaktif abu-abu
+    color: '#7D8A93', 
   },
 });
 
